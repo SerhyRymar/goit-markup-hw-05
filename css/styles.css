@@ -5,6 +5,7 @@
 	--primary-white-color: #ffffff;
 	--accent-section-color: #2f303a;
 	--primary-icon-color: #afb1b8;
+	--timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -49,7 +50,7 @@ img {
 	padding-top: 94px;
 	padding-bottom: 94px;
 }
-/* ------------------------------------HEADER------------------------------------ */
+/* -----------------------------------------HEADER------------------------------------------- */
 .header {
 	background-color: var(--primary-white-color);
 	padding-top: 24px;
@@ -101,6 +102,9 @@ img {
 }
 
 .header-nav {
+	position: relative;
+	padding-bottom: 32px;
+
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 1.14;
@@ -112,6 +116,26 @@ img {
 .contact:hover,
 .contact:focus {
 	color: var(--accent-color);
+	transition: opacity 250ms var(--timing-function);
+}
+.header-nav::after {
+	content: " ";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+
+	display: block;
+	width: 100%;
+	height: 4px;
+
+	background-color: var(--accent-color);
+	border-radius: 2px;
+	opacity: 0;
+	transition: opacity 250ms var(--timing-function);
+}
+
+.header-nav:hover::after {
+	opacity: 1;
 }
 
 .header-conect {
@@ -538,4 +562,65 @@ img {
 .progect-list-item {
 	width: 370px;
 	height: 404px;
+}
+/* --------------------------МОДАЛЬНЕ-ВІКНО------------------------- */
+.backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.2);
+
+	opacity: 1;
+	transition: opacity 250ms var(--timing-function);
+}
+
+.backdrop.is-hidden {
+	opacity: 0;
+	pointer-events: none;
+	visibility: hidden;
+}
+
+.backdrop.is-hidden.modal {
+	transform: translate(-50%, -50%);
+	scale: (2);
+	rotate: 180deg;
+	opacity: 0;
+}
+
+.modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	width: 528px;
+	height: 581px;
+
+	background: var(--primary-white-color);
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+}
+
+.btn-close-modal {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: inherit;
+
+	cursor: pointer;
+	background: #ffffff;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 50%;
+}
+.btn-close-icon {
+	fill: var(--primary-text-color);
 }
