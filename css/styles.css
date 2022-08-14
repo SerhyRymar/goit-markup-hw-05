@@ -116,7 +116,6 @@ img {
 .contact:hover,
 .contact:focus {
 	color: var(--accent-color);
-	transition: color 250ms var(--timing-function);
 }
 .header-nav::after {
 	content: " ";
@@ -186,8 +185,10 @@ img {
 	color: var(--second-text-color);
 	margin-left: 10px;
 
-	display: flex;
+	display: flex;	
 	align-items: center;
+
+	transition: color 250ms var(--timing-function);
 }
 
 .header-contact-mail {
@@ -442,31 +443,37 @@ img {
 	gap: 30px;
 }
 .clients-logo-item {
-	border: 1px solid var(--primary-icon-color);
-	border-radius: 4px;
+	display: flex;
+	justify-content: center;
 }
 .clients-logo-link {
-	background-color: var(--primary-white-color);
-	display: flex;
+    display: flex;
+
+	align-items: center;
+    justify-content: center;
 	width: 170px;
 	height: 92px;
-	align-items: center;
+
+	background-color: var(--primary-white-color);
 	border-radius: 4px;
+	border: 1px solid var(--primary-icon-color);
+
+	transition: border 250ms var(--timing-function);
 }
 .clients-logo-icon {
 	fill: var(--primary-icon-color);
 	transition: fill 250ms var(--timing-function);
 }
-.clients-logo-item:hover,
-.clients-logo-item:focus {
-	border: 1px solid var(--accent-color);
-}
-
-.clients-logo-link:hover .clients-logo-icon,
-.clients-logo-link:focus .clients-logo-icon {
+.clients-logo-icon:hover,
+.clients-logo-icon:focus {
 	fill: var(--accent-color);
 }
-/* -----------------------FOOTER--------------------------- */
+.clients-logo-link:hover,
+.clients-logo-link:focus{
+	fill: var(--accent-color);
+	border: 1px solid var(--accent-color);
+}
+/* --------------------------------FOOTER--------------------------------- */
 
 .address {
 	font-style: normal;
@@ -628,39 +635,38 @@ img {
 	position: relative;
 	overflow: hidden;
 }
-
-.progect-cover-text {
+.progect-container-text {
 	position: absolute;
 	top: 0;
 	left: 0;
 
 	height: 100%;
 	padding: 64px 24px;
-
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.56;
-    letter-spacing: 0.03em;
-    color: var(--primary-white-color);
 	background-color: rgba(33, 150, 243, 0.9);
 
 	transform: translateY(100%);
 	transition: transform 250ms linear;
 }
-.progect-list-item:hover .progect-cover-text{
-	transform: translateY(0%);
-
+.progect-cover-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.56;
+    letter-spacing: 0.03em;
+    color: var(--primary-white-color);
+}
+.progect-list-link:hover .progect-container-text, 
+.progect-list-link:focus .progect-container-text{
+    transform: translateY(0%);
 }
 /* --------------------------МОДАЛЬНЕ-ВІКНО------------------------- */
 .backdrop {
-	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.2);
 
-	transition: opacity 1000ms linear, visibility 1000ms;
+	transition: opacity 250ms linear, visibility 250ms;
 }
 
 .is-hidden {
